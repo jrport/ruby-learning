@@ -1,22 +1,23 @@
-arr = Array.new(10).map{ |value| rand(0...100) }
+print 'Enter array size: '
 
-def bubble_sort(arr)
+arr_size = gets.to_i
+arr = Array.new(arr_size).map{ |arr_item| rand(1...100) }
+
+def bubble_sort(array) 
   unsorted = true
   while unsorted
     unsorted = false
-    arr.each_with_index do |number, index| 
-      if index == arr.length - 1
-        break
+    array.each_with_index do |number, index|
+      if index == array.length - 1
+       break
       end
-      if number > arr[index + 1]
-        arr[index], arr[index + 1] = arr[index + 1], arr[index]
+      if number > array[index + 1]
+        array[index], array[index + 1] = array[index + 1], array[index]
         unsorted = true
-        puts arr.to_s
       end
     end
   end
-  puts "Sorted: #{arr.to_s}"
+  return array
 end
 
-print "Original: #{arr} \n"
-bubble_sort(arr)
+print "Old array: #{arr} \nNew array: #{bubble_sort(arr)}"
